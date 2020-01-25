@@ -1,4 +1,9 @@
 import { Component } from '@angular/core';
+import { QRResourceManagerService } from '../services/qrresource-manager.service';
+import { IQRResource } from '../data/models/qr-resource.interface';
+import { ModalController } from '@ionic/angular';
+import { AddNewQRResourcePage } from '../add-new-qrresource/add-new-qrresource.page';
+import { DisplayOutputPage } from '../display-output/display-output.page';
 
 @Component({
   selector: 'app-home',
@@ -7,6 +12,28 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  constructor() {}
+  qrResourceList: IQRResource[]
 
+  constructor(public modalController: ModalController,
+    public qrManagerService: QRResourceManagerService) {
+    this.qrResourceList = this.qrManagerService.getQRResourceList();
+  }
+
+  public removeQRResource(index: number) {
+    this.qrManagerService.removeQRResource(index);
+  }
+
+  async displayAddNewQRResourceModal() {
+    const modal = await this.modalController.create({
+      component: AddNewQRResourcePage
+    });
+    return await modal.present();
+  }
+
+  async displayOutputPageModal() {
+    const modal = await this.modalController.create({
+      component: DisplayOutputPage
+    });
+    return await modal.present();
+  }
 }
