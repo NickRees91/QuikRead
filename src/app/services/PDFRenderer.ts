@@ -44,7 +44,7 @@ export default class PDFRenderer {
         let descriptionLineWords: string[] = [];
 
         words.forEach((word: string) => {
-            if ((descriptionLineWords.join(' ') + ' ' + word).length > 80) {
+            if ((descriptionLineWords.join(' ') + ' ' + word).length > 70) {
                 descriptionLines.push(descriptionLineWords.join(' '));
                 descriptionLineWords = [];
             }

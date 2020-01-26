@@ -13,7 +13,9 @@ import { IonicStorageModule } from '@ionic/storage';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(),
+  imports: [BrowserModule, IonicModule.forRoot({
+    mode: 'ios'
+  }),
     IonicStorageModule.forRoot({
       name: '__HVQR2020'
     }), AppRoutingModule],

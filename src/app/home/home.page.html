@@ -1,24 +1,27 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>
-      QuikRead
-    </ion-title>
-  </ion-toolbar>
+
 </ion-header>
 
 <ion-content>
+  <br>
   <ion-card id="main-content">
+
     <ion-card-header>
-      <ion-card-title>Your Resources</ion-card-title>
+      <ion-card-title>QuikRead</ion-card-title>
     </ion-card-header>
 
     <ion-card-content>
-      <ion-label>
+      <p>
         Build a printable page of QR code links to resources for use in a clinical setting. QuikRead lets you give the
         patient an easy way to get to anything online using their own smartphone.
-        Add links to videos, images, documents or anything else to your list below. You can add as many different links
+      </p>
+      <br>
+      <p>
+        Add links to videos, images, documents or anything else to your list below. You can add as many different
+        links
         as you need— printing up to six per A4 page. To add your first link, press the `Add Link` button.
-      </ion-label>
+      </p>
+      <br>
       <ion-grid>
         <ion-row>
           <ion-col size="6">
@@ -35,9 +38,11 @@
           </ion-col>
         </ion-row>
       </ion-grid>
-      <ion-label id="noResources" *ngIf="!qrResourceList || qrResourceList.length == 0">
-        You don't have any QR Resources
-      </ion-label>
+      <div id="noResources">
+        <ion-label *ngIf="!qrResourceList || qrResourceList.length == 0">
+          Add a link above to get started
+        </ion-label>
+      </div>
       <ion-list *ngIf="qrResourceList && qrResourceList.length > 0">
         <ion-item-sliding *ngFor="let qrResource of qrResourceList; let i = index">
           <ion-item>
@@ -49,7 +54,7 @@
               <h3>{{qrResource?.description}}</h3>
               <p>{{qrResource?.publishedDate | date :'mediumDate'}}</p>
             </ion-label>
-            <ion-icon slot="end" name="trash" (click)="removeQRResource(i)"></ion-icon>
+            <ion-icon class="delete-icon" slot="end" name="trash" (click)="removeQRResource(i)"></ion-icon>
           </ion-item>
           <ion-item-options side="end">
             <ion-item-option color="danger" (click)="removeQRResource(i)">Remove</ion-item-option>

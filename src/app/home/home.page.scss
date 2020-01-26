@@ -1,12 +1,19 @@
 @media (min-width: 820px) {
     #main-content {
-        max-width: 60%;
+        max-width: 700px;
         margin: 0 auto;
     }
 }
 
+
 #noResources {
+    padding: 16px 0;
     font-size: larger;
     font-weight: bold;
     text-align: center;
+}
+
+.delete-icon:hover {
+    color: red;
+    cursor: pointer;
 }

@@ -5,112 +5,111 @@
 </ion-header>
 
 <ion-content>
-  <ion-card>
-    <ion-card-content>
-      <form [formGroup]="newQRResourceForm">
-        <ion-list>
-          <ion-item>
-            <ion-label position="stacked">Link</ion-label>
-            <ion-input formControlName="url" type="text" placeholder="e.g. https://www.nhs.uk" ngDefaultControl>
-            </ion-input>
-            <ion-icon
-              *ngIf="newQRResourceForm.get('url').errors && (newQRResourceForm.get('url').touched || newQRResourceForm.get('url').dirty)"
-              color="danger" name="information-circle" slot="end"></ion-icon>
-          </ion-item>
+  <div id="container">
+    <p>Add a link to a video, image, document, website or anything else online.</p>
+    <br>
+    <form [formGroup]="newQRResourceForm">
+      <ion-list>
+        <ion-item>
+          <ion-label position="stacked">Link</ion-label>
+          <ion-input formControlName="url" type="text" placeholder="https://" ngDefaultControl>
+          </ion-input>
+          <ion-icon
+            *ngIf="newQRResourceForm.get('url').errors && (newQRResourceForm.get('url').touched || newQRResourceForm.get('url').dirty)"
+            color="danger" name="information-circle" slot="end"></ion-icon>
+        </ion-item>
 
-          <ion-item>
-            <ion-label position="stacked">Name</ion-label>
-            <ion-input formControlName="name" type="text" placeholder="e.g. Health Information Leaflet"
-              ngDefaultControl>
-            </ion-input>
-            <ion-icon
-              *ngIf="newQRResourceForm.get('name').errors && (newQRResourceForm.get('name').touched || newQRResourceForm.get('name').dirty)"
-              color="danger" name="information-circle" slot="end"></ion-icon>
-          </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Name</ion-label>
+          <ion-input formControlName="name" type="text" placeholder="Shown as a title" ngDefaultControl>
+          </ion-input>
+          <ion-icon
+            *ngIf="newQRResourceForm.get('name').errors && (newQRResourceForm.get('name').touched || newQRResourceForm.get('name').dirty)"
+            color="danger" name="information-circle" slot="end"></ion-icon>
+        </ion-item>
 
-          <ion-item>
-            <ion-label position="stacked">Description</ion-label>
-            <ion-textarea rows="4" formControlName="description" type="text"
-              placeholder="e.g. This is a leaflet about general health and wellbeing" ngDefaultControl>
-            </ion-textarea>
-            <ion-icon
-              *ngIf="newQRResourceForm.get('description').errors && (newQRResourceForm.get('description').touched || newQRResourceForm.get('description').dirty)"
-              color="danger" name="information-circle" slot="end"></ion-icon>
-          </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Description</ion-label>
+          <ion-textarea rows="4" formControlName="description" type="text"
+            placeholder="Something short to help you remember the content" ngDefaultControl>
+          </ion-textarea>
+          <ion-icon
+            *ngIf="newQRResourceForm.get('description').errors && (newQRResourceForm.get('description').touched || newQRResourceForm.get('description').dirty)"
+            color="danger" name="information-circle" slot="end"></ion-icon>
+        </ion-item>
 
-          <ion-item>
-            <ion-label position="stacked">Published Date</ion-label>
-            <ion-input formControlName="publishedDate" type="date" ngDefaultControl>
-            </ion-input>
-            <ion-icon
-              *ngIf="newQRResourceForm.get('publishedDate').errors && (newQRResourceForm.get('publishedDate').touched || newQRResourceForm.get('publishedDate').dirty)"
-              color="danger" name="information-circle" slot="end"> </ion-icon>
-          </ion-item>
-        </ion-list>
-        <ion-grid>
-          <ion-row
-            *ngIf="(newQRResourceForm.get('name').errors && (newQRResourceForm.get('name').touched || newQRResourceForm.get('name').dirty)) || (newQRResourceForm.get('url').errors && (newQRResourceForm.get('url').touched || newQRResourceForm.get('url').dirty)) || (newQRResourceForm.get('publishedDate').errors && (newQRResourceForm.get('publishedDate').touched || newQRResourceForm.get('publishedDate').dirty))">
-            <ion-col size="12">
-              <!-- 'link' Errors START -->
-              <ng-container
-                *ngIf="newQRResourceForm.get('url').errors && (newQRResourceForm.get('url').touched || newQRResourceForm.get('url').dirty)">
-                <ng-container *ngFor="let validation of validation_messages.url">
-                  <p color="danger" class="validationErrors italic"
-                    *ngIf="newQRResourceForm.get('url').hasError(validation.type)">
-                    {{ validation.message }}
-                  </p>
-                </ng-container>
+        <ion-item>
+          <ion-label position="stacked">Published Date</ion-label>
+          <ion-input formControlName="publishedDate" type="date" ngDefaultControl>
+          </ion-input>
+          <ion-icon
+            *ngIf="newQRResourceForm.get('publishedDate').errors && (newQRResourceForm.get('publishedDate').touched || newQRResourceForm.get('publishedDate').dirty)"
+            color="danger" name="information-circle" slot="end"> </ion-icon>
+        </ion-item>
+      </ion-list>
+      <ion-grid>
+        <ion-row
+          *ngIf="(newQRResourceForm.get('name').errors && (newQRResourceForm.get('name').touched || newQRResourceForm.get('name').dirty)) || (newQRResourceForm.get('url').errors && (newQRResourceForm.get('url').touched || newQRResourceForm.get('url').dirty)) || (newQRResourceForm.get('publishedDate').errors && (newQRResourceForm.get('publishedDate').touched || newQRResourceForm.get('publishedDate').dirty))">
+          <ion-col size="12">
+            <!-- 'link' Errors START -->
+            <ng-container
+              *ngIf="newQRResourceForm.get('url').errors && (newQRResourceForm.get('url').touched || newQRResourceForm.get('url').dirty)">
+              <ng-container *ngFor="let validation of validation_messages.url">
+                <p color="danger" class="validationErrors italic"
+                  *ngIf="newQRResourceForm.get('url').hasError(validation.type)">
+                  {{ validation.message }}
+                </p>
               </ng-container>
-              <!-- 'link' Errors END -->
-              <!-- 'name' Errors START -->
-              <ng-container
-                *ngIf="newQRResourceForm.get('name').errors && (newQRResourceForm.get('name').touched || newQRResourceForm.get('name').dirty)">
-                <ng-container *ngFor="let validation of validation_messages.name">
-                  <p color="danger" class="validationErrors italic"
-                    *ngIf="newQRResourceForm.get('name').hasError(validation.type)">
-                    {{ validation.message }}
-                  </p>
-                </ng-container>
+            </ng-container>
+            <!-- 'link' Errors END -->
+            <!-- 'name' Errors START -->
+            <ng-container
+              *ngIf="newQRResourceForm.get('name').errors && (newQRResourceForm.get('name').touched || newQRResourceForm.get('name').dirty)">
+              <ng-container *ngFor="let validation of validation_messages.name">
+                <p color="danger" class="validationErrors italic"
+                  *ngIf="newQRResourceForm.get('name').hasError(validation.type)">
+                  {{ validation.message }}
+                </p>
               </ng-container>
-              <!-- 'name' Errors END -->
-              <!-- 'description' Errors START -->
-              <ng-container
-                *ngIf="newQRResourceForm.get('description').errors && (newQRResourceForm.get('description').touched || newQRResourceForm.get('description').dirty)">
-                <ng-container *ngFor="let validation of validation_messages.description">
-                  <p color="danger" class="validationErrors italic"
-                    *ngIf="newQRResourceForm.get('description').hasError(validation.type)">
-                    {{ validation.message }}
-                  </p>
-                </ng-container>
+            </ng-container>
+            <!-- 'name' Errors END -->
+            <!-- 'description' Errors START -->
+            <ng-container
+              *ngIf="newQRResourceForm.get('description').errors && (newQRResourceForm.get('description').touched || newQRResourceForm.get('description').dirty)">
+              <ng-container *ngFor="let validation of validation_messages.description">
+                <p color="danger" class="validationErrors italic"
+                  *ngIf="newQRResourceForm.get('description').hasError(validation.type)">
+                  {{ validation.message }}
+                </p>
               </ng-container>
-              <!-- 'description' Errors END -->
-              <!-- 'publishedDate' Errors START -->
-              <ng-container
-                *ngIf="newQRResourceForm.get('publishedDate').errors && (newQRResourceForm.get('publishedDate').touched || newQRResourceForm.get('publishedDate').dirty)">
-                <ng-container *ngFor="let validation of validation_messages.publishedDate">
-                  <p color="danger" class="validationErrors italic"
-                    *ngIf="newQRResourceForm.get('publishedDate').hasError(validation.type)">
-                    {{ validation.message }}
-                  </p>
-                </ng-container>
+            </ng-container>
+            <!-- 'description' Errors END -->
+            <!-- 'publishedDate' Errors START -->
+            <ng-container
+              *ngIf="newQRResourceForm.get('publishedDate').errors && (newQRResourceForm.get('publishedDate').touched || newQRResourceForm.get('publishedDate').dirty)">
+              <ng-container *ngFor="let validation of validation_messages.publishedDate">
+                <p color="danger" class="validationErrors italic"
+                  *ngIf="newQRResourceForm.get('publishedDate').hasError(validation.type)">
+                  {{ validation.message }}
+                </p>
               </ng-container>
-              <!-- 'publishedDate' Errors END -->
-            </ion-col>
-          </ion-row>
-          <ion-row>
-            <ion-col size="6">
-              <ion-button color="danger" expand="block" (click)="presentAlertConfirm()">
-                Close
-              </ion-button>
-            </ion-col>
-            <ion-col size="6">
-              <ion-button expand="block" [disabled]="!newQRResourceForm.valid" (click)="addNewQRResource()">
-                Add New Entry
-              </ion-button>
-            </ion-col>
-          </ion-row>
-        </ion-grid>
-      </form>
-    </ion-card-content>
-  </ion-card>
+            </ng-container>
+            <!-- 'publishedDate' Errors END -->
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="6">
+            <ion-button fill="clear" expand="block" (click)="presentAlertConfirm()">
+              Cancel
+            </ion-button>
+          </ion-col>
+          <ion-col size="6">
+            <ion-button expand="block" [disabled]="!newQRResourceForm.valid" (click)="addNewQRResource()">
+              Add Link
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </form>
+  </div>
 </ion-content>

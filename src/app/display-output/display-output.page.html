@@ -13,19 +13,20 @@
 </ion-header>
 
 <ion-content>
-  <ion-label>
+  <div id="container">
     <h2>Links to useful resources</h2>
-  </ion-label>
-  <ion-list *ngIf="qrResourceList && qrResourceList.length > 0">
-    <ion-item *ngFor="let qrResource of qrResourceList; let i = index">
-      <ion-thumbnail slot="start">
-        <img [src]="qrResource?.qrImage">
-      </ion-thumbnail>
-      <ion-label>
-        <h2>{{qrResource?.name}}</h2>
-        <h3>{{qrResource?.description}}</h3>
-        <p>{{qrResource?.publishedDate | date :'mediumDate'}}</p>
-      </ion-label>
-    </ion-item>
-  </ion-list>
+    <br>
+    <ion-list *ngIf="qrResourceList && qrResourceList.length > 0">
+      <ion-item *ngFor="let qrResource of qrResourceList; let i = index">
+        <ion-thumbnail slot="start">
+          <img [src]="qrResource?.qrImage">
+        </ion-thumbnail>
+        <ion-label>
+          <h2>{{qrResource?.name}}</h2>
+          <h3>{{qrResource?.description}}</h3>
+          <p>{{qrResource?.publishedDate | date :'mediumDate'}}</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
 </ion-content>

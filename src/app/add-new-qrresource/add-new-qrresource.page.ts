@@ -25,7 +25,7 @@ export class AddNewQRResourcePage implements OnInit {
     private formBuilder: FormBuilder,
     public qrManagerService: QRResourceManagerService) {
     this.newQRResourceForm = this.formBuilder.group({
-      name: ['', Validators.compose([Validators.required])],
+      name: [''],
       description: [''],
       url: ['', Validators.compose([Validators.required, Validators.maxLength(30), Validators.pattern('https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,}')])],
       publishedDate: [moment().format('YYYY-MM-DD')]
