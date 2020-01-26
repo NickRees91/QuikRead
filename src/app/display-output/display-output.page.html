@@ -5,7 +5,7 @@
       <ion-button (click)="dismissTapped()">
         <ion-icon slot="icon-only" name="close"></ion-icon>
       </ion-button>
-      <ion-button (click)="print()">
+      <ion-button (click)="renderPDFTapped()">
         <ion-icon slot="icon-only" name="print"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -13,16 +13,16 @@
 </ion-header>
 
 <ion-content>
-  <ion-grid *ngIf="qrResourceList && qrResourceList.length > 0">
-    <ion-row *ngFor="let qrResource of qrResourceList; let i = index">
-      <ion-col size="12">
-        <img class="qrImage" [src]="qrResource?.qrImage">
-        <ion-label>
-          <h2>{{qrResource?.name}}</h2>
-          <h3>{{qrResource?.description}}</h3>
-          <p>{{qrResource?.publishedDate | date :'mediumDate'}}</p>
-        </ion-label>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+  <ion-list *ngIf="qrResourceList && qrResourceList.length > 0">
+    <ion-item *ngFor="let qrResource of qrResourceList; let i = index">
+      <ion-thumbnail slot="start">
+        <img [src]="qrResource?.qrImage">
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{qrResource?.name}}</h2>
+        <h3>{{qrResource?.description}}</h3>
+        <p>{{qrResource?.publishedDate | date :'mediumDate'}}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
 </ion-content>

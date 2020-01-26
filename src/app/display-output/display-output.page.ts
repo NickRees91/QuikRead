@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { IQRResource } from '../data/models/qr-resource.interface';
 import { QRResourceManagerService } from '../services/qrresource-manager.service';
 import { ModalController } from '@ionic/angular';
+import PDFRenderer from '../services/PDFRenderer';
+
+import * as jsPDF from 'jspdf'
 
 @Component({
   selector: 'app-display-output',
@@ -22,6 +25,23 @@ export class DisplayOutputPage implements OnInit {
 
   dismissTapped() {
     this.modalController.dismiss();
+  }
+
+  renderPDFTapped() {
+    const pdfRenderer = new PDFRenderer();
+    for (let index = 0; index < this.qrResourceList.length; index++) {
+      const qrResource = this.qrResourceList[index]
+      const temp: any = qrResource;
+      temp.qrImage = qrResource.qrImage.toString()
+      temp.url = qrResource.url.toString()
+      pdfRenderer.addEntry(temp);
+    }
+    pdfRenderer.render(new jsPDF({
+      orientation: 'p',
+      unit: 'mm',
+      format: 'a4',
+      putOnlyUsedFonts: true
+    }), 'test.pdf')
   }
 
 }
