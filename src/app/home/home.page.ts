@@ -16,6 +16,9 @@ export class HomePage {
 
   constructor(public modalController: ModalController,
     public qrManagerService: QRResourceManagerService) {
+    this.qrManagerService.getQRResourceList().then(qrResourceList => {
+      this.qrResourceList = qrResourceList;
+    });
   }
 
   public removeQRResource(index: number) {
@@ -28,6 +31,11 @@ export class HomePage {
     const modal = await this.modalController.create({
       component: AddNewQRResourcePage
     });
+    modal.onDidDismiss().then(data => {
+      this.qrManagerService.getQRResourceList().then(qrResourceList => {
+        this.qrResourceList = qrResourceList;
+      });
+    });
     return await modal.present();
   }
 
@@ -38,9 +46,4 @@ export class HomePage {
     return await modal.present();
   }
 
-  ionViewWillEnter() {
-    this.qrManagerService.getQRResourceList().then(qrResourceList => {
-      this.qrResourceList = qrResourceList;
-    });
-  }
 }

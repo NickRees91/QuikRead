@@ -41,10 +41,9 @@ export default class PDFRenderer {
                 descriptionLines.push(descriptionLineWords.join(' '));
                 descriptionLineWords = [];
             }
-
             descriptionLineWords.push(word);
         });
-
+        if (descriptionLineWords.length > 0) descriptionLines.push(descriptionLineWords.join(' '));
         return descriptionLines;
     }
 }

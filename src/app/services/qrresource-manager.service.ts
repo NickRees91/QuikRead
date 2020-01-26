@@ -15,27 +15,30 @@ export class QRResourceManagerService {
   private qrResourceList: IQRResource[]
 
   constructor(private storage: Storage) {
-    // this.addNewQRResource({
-    //   name: 'PDF 1',
-    //   description: 'Description 1',
-    //   url: new URL('https://www.google.co.uk'),
-    //   qrImage: null,
-    //   publishedDate: moment().toDate()
-    // });
-    // this.addNewQRResource({
-    //   name: 'PDF 2',
-    //   description: 'Description 1',
-    //   url: new URL('https://www.google.co.uk'),
-    //   qrImage: null,
-    //   publishedDate: moment().toDate()
-    // });
-    // this.addNewQRResource({
-    //   name: 'PDF 3',
-    //   description: 'Description 1',
-    //   url: new URL('https://www.google.co.uk'),
-    //   qrImage: null,
-    //   publishedDate: moment().toDate()
-    // });
+    this.getQRResourceList().then((qrResourceList) => {
+      this.qrResourceList = qrResourceList;
+      this.addNewQRResource({
+        name: 'PDF 1',
+        description: 'Porttitor fringilla a dignissim arcu sociis quam dignissim a vitae sollicitudin',
+        url: new URL('https://www.google.co.uk'),
+        qrImage: null,
+        publishedDate: moment().toDate()
+      });
+      this.addNewQRResource({
+        name: 'PDF 2',
+        description: 'Porttitor fringilla a dignissim arcu sociis quam dignissim a vitae sollicitudin',
+        url: new URL('https://www.google.co.uk'),
+        qrImage: null,
+        publishedDate: moment().toDate()
+      });
+      this.addNewQRResource({
+        name: 'PDF 3',
+        description: 'Porttitor fringilla a dignissim arcu sociis quam dignissim a vitae sollicitudin',
+        url: new URL('https://www.google.co.uk'),
+        qrImage: null,
+        publishedDate: moment().toDate()
+      });
+    });
   }
 
   public addNewQRResource(newQRResource: IQRResource): Promise<IQRResource[]> {
