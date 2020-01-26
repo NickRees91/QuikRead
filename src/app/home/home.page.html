@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      HVQR2020
+      QuikRead
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,26 +9,29 @@
 <ion-content>
   <ion-card id="main-content">
     <ion-card-header>
-      <ion-card-title>Your PDFs</ion-card-title>
+      <ion-card-title>Your Resources</ion-card-title>
     </ion-card-header>
 
     <ion-card-content>
       <ion-label>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ut pellentesque nunc. Quisque est risus,
-        viverra quis eleifend ac, volutpat vel nisi. Ut consectetur mauris sed elit vestibulum, in tempor purus mollis.
-        Morbi tincidunt in orci vitae blandit. Proin ac egestas orci, ut vulputate elit. Cras finibus sem mauris, eu
-        feugiat mauris suscipit ac. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia
-        Curae; Proin ac lacus vitae enim ultrices dictum. In tortor tellus, scelerisque vel vehicula blandit, rutrum non
-        arcu.
+        Build a printable page of QR code links to resources for use in a clinical setting. QuikRead lets you give the
+        patient an easy way to get to anything online using their own smartphone.
+        Add links to videos, images, documents or anything else to your list below. You can add as many different links
+        as you need— printing up to six per A4 page. To add your first link, press the `Add Link` button.
       </ion-label>
       <ion-grid>
         <ion-row>
           <ion-col size="6">
-            <ion-button expand="block" fill="outline" (click)="displayAddNewQRResourceModal()">Add
+            <ion-button expand="block" fill="outline" (click)="displayAddNewQRResourceModal()">
+              <ion-icon slot="start" name="add"></ion-icon>
+              Add Link
             </ion-button>
           </ion-col>
-          <ion-col size="6">
-            <ion-button expand="block" fill="outline" (click)="displayOutputPageModal()">Create</ion-button>
+          <ion-col size=" 6">
+            <ion-button expand="block" fill="solid" (click)="displayOutputPageModal()">
+              <ion-icon slot="start" name="share-alt"></ion-icon>
+              Create Page
+            </ion-button>
           </ion-col>
         </ion-row>
       </ion-grid>

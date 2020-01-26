@@ -12,6 +12,7 @@ export default class PDFRenderer {
         pdfDocument.text(15, 16, pageTitle);
 
         let index = 0;
+        let resourceCount = 1;
         this.entries.forEach((entry: IQRResource) => {
             pdfDocument.addImage(entry.qrImage, 'SVG', 15, 29 + (43 * index), 28, 28);
             pdfDocument.setFontSize(14);
@@ -23,7 +24,13 @@ export default class PDFRenderer {
             if ((index + 1) < this.entries.length) {
                 pdfDocument.rect(15, 64 + (43 * index), 176, 0.5, 'F');
             }
+
             index++;
+            resourceCount++;
+            if (index > 5 && resourceCount <= this.entries.length) {
+                index = 0;
+                pdfDocument.addPage();
+            }
         });
 
         pdfDocument.save(filename);

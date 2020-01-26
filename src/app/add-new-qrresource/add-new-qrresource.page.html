@@ -11,7 +11,7 @@
         <ion-list>
           <ion-item>
             <ion-label position="stacked">Link</ion-label>
-            <ion-input formControlName="url" type="text" placeholder="e.g. https://www.google.co.uk" ngDefaultControl>
+            <ion-input formControlName="url" type="text" placeholder="e.g. https://www.nhs.uk" ngDefaultControl>
             </ion-input>
             <ion-icon
               *ngIf="newQRResourceForm.get('url').errors && (newQRResourceForm.get('url').touched || newQRResourceForm.get('url').dirty)"
@@ -20,7 +20,8 @@
 
           <ion-item>
             <ion-label position="stacked">Name</ion-label>
-            <ion-input formControlName="name" type="text" placeholder="e.g. A leaflet" ngDefaultControl>
+            <ion-input formControlName="name" type="text" placeholder="e.g. Health Information Leaflet"
+              ngDefaultControl>
             </ion-input>
             <ion-icon
               *ngIf="newQRResourceForm.get('name').errors && (newQRResourceForm.get('name').touched || newQRResourceForm.get('name').dirty)"
@@ -29,8 +30,9 @@
 
           <ion-item>
             <ion-label position="stacked">Description</ion-label>
-            <ion-input formControlName="description" type="text" placeholder="e.g. A leaflet" ngDefaultControl>
-            </ion-input>
+            <ion-textarea rows="4" formControlName="description" type="text"
+              placeholder="e.g. This is a leaflet about general health and wellbeing" ngDefaultControl>
+            </ion-textarea>
             <ion-icon
               *ngIf="newQRResourceForm.get('description').errors && (newQRResourceForm.get('description').touched || newQRResourceForm.get('description').dirty)"
               color="danger" name="information-circle" slot="end"></ion-icon>

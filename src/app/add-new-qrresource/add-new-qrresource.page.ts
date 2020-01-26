@@ -16,7 +16,7 @@ export class AddNewQRResourcePage implements OnInit {
   public validation_messages: any = {
     name: [{ type: 'required', message: 'Name is required' }],
     description: [],
-    url: [{ type: 'required', message: 'Link is required' }],
+    url: [{ type: 'required', message: 'Link is required' }, { type: 'pattern', message: 'A valid URL is required' }],
     publishedDate: []
   };
 
@@ -25,9 +25,9 @@ export class AddNewQRResourcePage implements OnInit {
     private formBuilder: FormBuilder,
     public qrManagerService: QRResourceManagerService) {
     this.newQRResourceForm = this.formBuilder.group({
-      name: ['Test Name', Validators.compose([Validators.required])],
-      description: ['A Test Description'],
-      url: ['https://www.google.co.uk', Validators.compose([Validators.required])],
+      name: ['', Validators.compose([Validators.required])],
+      description: [''],
+      url: ['', Validators.compose([Validators.required, Validators.pattern('https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,}')])],
       publishedDate: [moment().format('YYYY-MM-DD')]
     });
   }

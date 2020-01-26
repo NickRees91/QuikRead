@@ -29,7 +29,7 @@ export class DisplayOutputPage implements OnInit {
 
   renderPDFTapped() {
     const pdfRenderer = new PDFRenderer();
-    for (let index = 0; index < this.qrResourceList.slice(0, 6).length; index++) {
+    for (let index = 0; index < this.qrResourceList.length; index++) {
       const qrResource = this.qrResourceList[index]
       const temp: any = qrResource;
       temp.qrImage = qrResource.qrImage.toString()
@@ -41,7 +41,7 @@ export class DisplayOutputPage implements OnInit {
       unit: 'mm',
       format: 'a4',
       putOnlyUsedFonts: true
-    }), 'test.pdf')
+    }), 'Your QuikRead Page.pdf')
   }
 
 }
