@@ -26,9 +26,9 @@ export class AddNewQRResourcePage implements OnInit {
     public qrManagerService: QRResourceManagerService) {
     this.newQRResourceForm = this.formBuilder.group({
       name: ['Test Name', Validators.compose([Validators.required])],
-      description: [''],
+      description: ['A Test Description'],
       url: ['https://www.google.co.uk', Validators.compose([Validators.required])],
-      publishedDate: ['']
+      publishedDate: [moment().format('YYYY-MM-DD')]
     });
   }
 
@@ -46,27 +46,24 @@ export class AddNewQRResourcePage implements OnInit {
       url: new URL(this.newQRResourceForm.value.url),
       qrImage: this.qrManagerService.generateQRCodeDataURLFromString(`${new URL(this.newQRResourceForm.value.url)}`),
       publishedDate: moment(this.newQRResourceForm.value.publishedDate).toDate()
-    });
+    }).then(() => {
+    });;
     this.modalController.dismiss();
   }
 
   async presentAlertConfirm() {
     let alert = await this.alertController.create({
-      header: 'Are you sure',
+      header: 'Are you sure?',
       message: 'You\'re changes will not be saved ',
       buttons: [
         {
           text: 'Close',
           role: 'cancel',
           handler: () => {
-            console.log('Close');
             this.modalController.dismiss();
           }
         }, {
-          text: 'Stay Here',
-          handler: () => {
-            console.log('Stay Here');
-          }
+          text: 'Stay Here'
         }
       ]
     });

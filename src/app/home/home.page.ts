@@ -16,11 +16,12 @@ export class HomePage {
 
   constructor(public modalController: ModalController,
     public qrManagerService: QRResourceManagerService) {
-    this.qrResourceList = this.qrManagerService.getQRResourceList();
   }
 
   public removeQRResource(index: number) {
-    this.qrManagerService.removeQRResource(index);
+    this.qrManagerService.removeQRResource(index).then((qrResourceList) => {
+      this.qrResourceList = qrResourceList;
+    });
   }
 
   async displayAddNewQRResourceModal() {
@@ -35,5 +36,11 @@ export class HomePage {
       component: DisplayOutputPage
     });
     return await modal.present();
+  }
+
+  ionViewWillEnter() {
+    this.qrManagerService.getQRResourceList().then(qrResourceList => {
+      this.qrResourceList = qrResourceList;
+    });
   }
 }

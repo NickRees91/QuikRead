@@ -38,7 +38,7 @@
 
           <ion-item>
             <ion-label position="stacked">Published Date</ion-label>
-            <ion-input formControlName="publishedDate" type="date" placeholder="e.g. 25-01-2020" ngDefaultControl>
+            <ion-input formControlName="publishedDate" type="date" ngDefaultControl>
             </ion-input>
             <ion-icon
               *ngIf="newQRResourceForm.get('publishedDate').errors && (newQRResourceForm.get('publishedDate').touched || newQRResourceForm.get('publishedDate').dirty)"

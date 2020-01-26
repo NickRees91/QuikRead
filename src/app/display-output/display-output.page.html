@@ -2,6 +2,9 @@
   <ion-toolbar>
     <ion-title>QR Code Poster</ion-title>
     <ion-buttons slot="end">
+      <ion-button (click)="dismissTapped()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
       <ion-button (click)="print()">
         <ion-icon slot="icon-only" name="print"></ion-icon>
       </ion-button>
@@ -17,7 +20,7 @@
         <ion-label>
           <h2>{{qrResource?.name}}</h2>
           <h3>{{qrResource?.description}}</h3>
-          <p>{{qrResource?.publishedDate}}</p>
+          <p>{{qrResource?.publishedDate | date :'mediumDate'}}</p>
         </ion-label>
       </ion-col>
     </ion-row>
