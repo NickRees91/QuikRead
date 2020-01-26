@@ -29,7 +29,7 @@ export class DisplayOutputPage implements OnInit {
 
   renderPDFTapped() {
     const pdfRenderer = new PDFRenderer();
-    for (let index = 0; index < 6; index++) {
+    for (let index = 0; index < this.qrResourceList.slice(0, 6).length; index++) {
       const qrResource = this.qrResourceList[index]
       const temp: any = qrResource;
       temp.qrImage = qrResource.qrImage.toString()

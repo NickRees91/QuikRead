@@ -17,27 +17,29 @@ export class QRResourceManagerService {
   constructor(private storage: Storage) {
     this.getQRResourceList().then((qrResourceList) => {
       this.qrResourceList = qrResourceList;
-      this.addNewQRResource({
-        name: 'PDF 1',
-        description: 'Porttitor fringilla a dignissim arcu sociis quam dignissim a vitae sollicitudin',
-        url: new URL('https://www.google.co.uk'),
-        qrImage: null,
-        publishedDate: moment().toDate()
-      });
-      this.addNewQRResource({
-        name: 'PDF 2',
-        description: 'Porttitor fringilla a dignissim arcu sociis quam dignissim a vitae sollicitudin',
-        url: new URL('https://www.google.co.uk'),
-        qrImage: null,
-        publishedDate: moment().toDate()
-      });
-      this.addNewQRResource({
-        name: 'PDF 3',
-        description: 'Porttitor fringilla a dignissim arcu sociis quam dignissim a vitae sollicitudin',
-        url: new URL('https://www.google.co.uk'),
-        qrImage: null,
-        publishedDate: moment().toDate()
-      });
+      if (this.qrResourceList && this.qrResourceList.length == 0) {
+        this.addNewQRResource({
+          name: 'PDF 1',
+          description: 'Porttitor fringilla a dignissim arcu sociis quam dignissim a vitae sollicitudin',
+          url: new URL('https://www.google.co.uk'),
+          qrImage: null,
+          publishedDate: moment().toDate()
+        });
+        this.addNewQRResource({
+          name: 'PDF 2',
+          description: 'Porttitor fringilla a dignissim arcu sociis quam dignissim a vitae sollicitudin',
+          url: new URL('https://www.google.co.uk'),
+          qrImage: null,
+          publishedDate: moment().toDate()
+        });
+        this.addNewQRResource({
+          name: 'PDF 3',
+          description: 'Porttitor fringilla a dignissim arcu sociis quam dignissim a vitae sollicitudin',
+          url: new URL('https://www.google.co.uk'),
+          qrImage: null,
+          publishedDate: moment().toDate()
+        });
+      }
     });
   }
 
@@ -59,20 +61,23 @@ export class QRResourceManagerService {
   public getQRResourceList(): Promise<IQRResource[]> {
     return new Promise((resolve) => {
       this.storage.get(STORAGE_KEY).then((values) => {
-        this.qrResourceList = values.map((value) => {
-          const qrResource: IQRResource = {
-            name: value.name,
-            description: value.description,
-            url: new URL(value.url),
-            qrImage: null,
-            publishedDate: moment(value.publishedDate).toDate()
-          };
-          return qrResource;
-        });
-        if (this.qrResourceList) {
-          for (let index = 0; index < this.qrResourceList.length; index++) {
-            let qrResource = this.qrResourceList[index];
-            qrResource.qrImage = this.generateQRCodeDataURLFromString(`${qrResource.url}`);
+        this.qrResourceList = [];
+        if (values) {
+          this.qrResourceList = values.map((value) => {
+            const qrResource: IQRResource = {
+              name: value.name,
+              description: value.description,
+              url: new URL(value.url),
+              qrImage: null,
+              publishedDate: moment(value.publishedDate).toDate()
+            };
+            return qrResource;
+          });
+          if (this.qrResourceList) {
+            for (let index = 0; index < this.qrResourceList.length; index++) {
+              let qrResource = this.qrResourceList[index];
+              qrResource.qrImage = this.generateQRCodeDataURLFromString(`${qrResource.url}`);
+            }
           }
         }
         resolve(this.qrResourceList);
