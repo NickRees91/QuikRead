@@ -19,23 +19,23 @@ export class QRResourceManagerService {
       this.qrResourceList = qrResourceList;
       if (this.qrResourceList && this.qrResourceList.length == 0) {
         this.addNewQRResource({
-          name: 'PDF 1',
-          description: 'Porttitor fringilla a dignissim arcu sociis quam dignissim a vitae sollicitudin',
-          url: new URL('https://www.google.co.uk'),
+          name: 'Breastfeeding resources > Positioning and attachment video',
+          description: 'This video provides guidance on supporting mothers to breastfeed effectively.',
+          url: new URL('https://youtu.be/3nbTEG1fOrE'),
           qrImage: null,
           publishedDate: moment().toDate()
         });
         this.addNewQRResource({
-          name: 'PDF 2',
-          description: 'Porttitor fringilla a dignissim arcu sociis quam dignissim a vitae sollicitudin',
-          url: new URL('https://www.google.co.uk'),
+          name: 'Responsive Feeding Infosheet',
+          description: 'This infosheet helps health professionals to support parents to feed their babies responsively and so develop close and loving relationships with them',
+          url: new URL('https://bit.ly/2U4oJGW'),
           qrImage: null,
           publishedDate: moment().toDate()
         });
         this.addNewQRResource({
-          name: 'PDF 3',
-          description: 'Porttitor fringilla a dignissim arcu sociis quam dignissim a vitae sollicitudin',
-          url: new URL('https://www.google.co.uk'),
+          name: 'Handle with care ',
+          description: 'Gives advice on safe ways of holding a baby and suggests ways parents can soothe and cope with a crying baby',
+          url: new URL('https://bit.ly/30XcwoV'),
           qrImage: null,
           publishedDate: moment().toDate()
         });

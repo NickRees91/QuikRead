@@ -35,7 +35,7 @@
           </ion-col>
         </ion-row>
       </ion-grid>
-      <ion-label *ngIf="!qrResourceList || qrResourceList.length == 0">
+      <ion-label id="noResources" *ngIf="!qrResourceList || qrResourceList.length == 0">
         You don't have any QR Resources
       </ion-label>
       <ion-list *ngIf="qrResourceList && qrResourceList.length > 0">

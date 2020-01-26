@@ -16,7 +16,7 @@ export class AddNewQRResourcePage implements OnInit {
   public validation_messages: any = {
     name: [{ type: 'required', message: 'Name is required' }],
     description: [],
-    url: [{ type: 'required', message: 'Link is required' }, { type: 'pattern', message: 'A valid URL is required' }],
+    url: [{ type: 'required', message: 'Link is required' }, { type: 'pattern', message: 'A valid URL is required' }, { type: 'maxlength', message: 'You can only use links which are shorter than 30 characters, please use a URL Shortener like <a href="https://bitly.com/">https://bitly.com/</a>' }],
     publishedDate: []
   };
 
@@ -27,7 +27,7 @@ export class AddNewQRResourcePage implements OnInit {
     this.newQRResourceForm = this.formBuilder.group({
       name: ['', Validators.compose([Validators.required])],
       description: [''],
-      url: ['', Validators.compose([Validators.required, Validators.pattern('https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,}')])],
+      url: ['', Validators.compose([Validators.required, Validators.maxLength(30), Validators.pattern('https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,}')])],
       publishedDate: [moment().format('YYYY-MM-DD')]
     });
   }
