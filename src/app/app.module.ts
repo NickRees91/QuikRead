@@ -17,7 +17,7 @@ import { IonicStorageModule } from '@ionic/storage';
     mode: 'ios'
   }),
     IonicStorageModule.forRoot({
-      name: '__HVQR2020'
+      name: '__quikread'
     }), AppRoutingModule],
   providers: [
     StatusBar,

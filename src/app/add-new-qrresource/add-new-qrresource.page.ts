@@ -13,6 +13,7 @@ import * as moment from 'moment';
 export class AddNewQRResourcePage implements OnInit {
 
   public newQRResourceForm: FormGroup;
+
   public validation_messages: any = {
     name: [{ type: 'required', message: 'Name is required' }],
     description: [],
@@ -32,8 +33,7 @@ export class AddNewQRResourcePage implements OnInit {
     });
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   dismissTapped() {
     this.modalController.dismiss();
